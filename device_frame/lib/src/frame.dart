@@ -71,12 +71,12 @@ class DeviceFrame extends StatelessWidget {
   }
 
   static Future<void> precache(BuildContext context) async {
-    for (var device in Devices.all) {
-      await precachePicture(
-        StringPicture(SvgPicture.svgStringDecoderBuilder, device.svgFrame),
-        context,
-      );
-    }
+    // for (var device in Devices.all) {
+    //   await precachePicture(
+    //     StringPicture(SvgPicture.svgStringDecoderBuilder, device.svgFrame),
+    //     context,
+    //   );
+    // }
   }
 
   static MediaQueryData mediaQuery(
