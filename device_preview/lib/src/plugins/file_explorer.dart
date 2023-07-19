@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:device_preview/device_preview.dart';
 import 'package:device_preview/src/views/widgets/popover.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
+import 'package:path_provider/path_provider.dart';
 import 'package:pedantic/pedantic.dart';
 
 import 'plugin.dart';
@@ -61,7 +61,7 @@ class _RootState extends State<_Root> {
   FileSystemEntityType? type;
   @override
   void initState() {
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _update();
     });
     super.initState();
@@ -184,7 +184,7 @@ class _DirectoryViewState extends State<_DirectoryView> {
   List<FileSystemEntity>? children;
   @override
   void initState() {
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _update();
     });
     super.initState();
@@ -342,7 +342,7 @@ class _FileViewState extends State<_FileView> {
 
   @override
   void initState() {
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _update();
     });
     super.initState();

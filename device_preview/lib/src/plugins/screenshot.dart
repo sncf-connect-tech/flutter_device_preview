@@ -1,9 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter/services.dart';
-import 'package:device_preview/src/device_preview.dart';
-import 'package:device_preview/src/views/device_preview_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
 import '../../device_preview.dart';
@@ -64,7 +62,7 @@ class _ScreenshotState extends State<_Screenshot> {
   dynamic error;
   @override
   void initState() {
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _take();
     });
     super.initState();

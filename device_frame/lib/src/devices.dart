@@ -1,10 +1,6 @@
-import 'dart:ui';
-
 import 'package:device_frame/device_frame.dart';
 import 'package:flutter/widgets.dart';
 import 'package:path_drawing/path_drawing.dart';
-
-import 'info/info.dart';
 
 part 'devices.g.dart';
 
@@ -50,9 +46,7 @@ class DeviceIdentifier {
     this.platform,
     this.type,
     this.name,
-  )   : assert(name != null),
-        assert(type != null),
-        assert(platform != null);
+  );
 
   @override
   bool operator ==(dynamic other) {
@@ -70,10 +64,10 @@ class DeviceIdentifier {
   @override
   String toString() {
     final platformKey =
-        platform.toString().replaceAll('${TargetPlatform}.', '').toLowerCase();
+        platform.toString().replaceAll('$TargetPlatform.', '').toLowerCase();
     final typeKey =
-        type.toString().replaceAll('${DeviceType}.', '').toLowerCase();
-    return '${platformKey}_${typeKey}_${name}';
+        type.toString().replaceAll('$DeviceType.', '').toLowerCase();
+    return '${platformKey}_${typeKey}_$name';
   }
 }
 

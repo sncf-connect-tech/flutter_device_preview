@@ -1,9 +1,6 @@
 import 'package:device_preview/device_preview.dart';
-import 'package:device_preview/src/state/store.dart';
-import 'package:device_preview/src/views/device_preview_style.dart';
 import 'package:device_preview/src/views/widgets/popover.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 class LocalesPopOver extends StatefulWidget {

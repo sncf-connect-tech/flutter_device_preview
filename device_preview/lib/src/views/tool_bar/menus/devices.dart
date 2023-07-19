@@ -1,13 +1,12 @@
+import 'package:device_frame/device_frame.dart';
 import 'package:device_preview/src/state/custom_device.dart';
 import 'package:device_preview/src/state/store.dart';
 import 'package:device_preview/src/views/device_preview_style.dart';
 import 'package:device_preview/src/views/tool_bar/button.dart';
-import 'package:device_frame/device_frame.dart';
 import 'package:device_preview/src/views/tool_bar/menus/accessibility.dart';
 import 'package:device_preview/src/views/tool_bar/menus/style.dart';
 import 'package:device_preview/src/views/widgets/popover.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 import '../../../utilities/spacing.dart';
@@ -47,12 +46,12 @@ class _DevicesPopOverState extends State<DevicesPopOver> {
               selected.contains(x.identifier.platform) &&
               x.name.replaceAll(' ', '').toLowerCase().contains(_searchedText))
           .toList()
-            ..sort((x, y) {
-              final result = x.screenSize.width.compareTo(y.screenSize.width);
-              return result == 0
-                  ? x.screenSize.height.compareTo(y.screenSize.height)
-                  : result;
-            }),
+        ..sort((x, y) {
+          final result = x.screenSize.width.compareTo(y.screenSize.width);
+          return result == 0
+              ? x.screenSize.height.compareTo(y.screenSize.height)
+              : result;
+        }),
     );
 
     final theme = DevicePreviewTheme.of(context);
@@ -167,7 +166,8 @@ class PlatformSelector extends StatelessWidget {
           Container(
             margin: EdgeInsets.symmetric(horizontal: 6),
             decoration: BoxDecoration(
-              color: theme.accentTextTheme.button!.color!.withOpacity(0.4),
+              color:
+                  theme.textTheme.labelLarge!.backgroundColor!.withOpacity(0.4),
               borderRadius: BorderRadius.circular(3),
             ),
             width: 2,

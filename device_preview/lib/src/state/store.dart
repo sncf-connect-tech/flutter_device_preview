@@ -1,11 +1,8 @@
-import 'dart:ui';
-
 import 'package:device_frame/device_frame.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pedantic/pedantic.dart';
 
-import '../../device_preview.dart';
+import '../../device_preview.dart' as preview;
 import '../storage/storage.dart';
 import 'custom_device.dart';
 import 'state.dart';
@@ -66,18 +63,19 @@ class DevicePreviewStore extends ChangeNotifier {
         final availaiableLocales = locales != null
             ? locales
                 .map(
-                  (available) =>
-                      defaultAvailableLocales.cast<NamedLocale?>().firstWhere(
-                            (all) => all!.code == available.toString(),
-                            orElse: () => null,
-                          ),
+                  (available) => preview.defaultAvailableLocales
+                      .cast<preview.NamedLocale?>()
+                      .firstWhere(
+                        (all) => all!.code == available.toString(),
+                        orElse: () => null,
+                      ),
                 )
                 .where((x) => x != null)
                 .toList()
-            : defaultAvailableLocales;
+            : preview.defaultAvailableLocales;
 
         final defaultLocale = basicLocaleListResolution(
-          WidgetsBinding.instance!.window.locales,
+          WidgetsBinding.instance.window.locales,
           availaiableLocales.map((x) => x!.locale).toList(),
         ).toString();
 
@@ -100,7 +98,7 @@ class DevicePreviewStore extends ChangeNotifier {
           );
         }
         state = DevicePreviewState.initialized(
-          locales: availaiableLocales.cast<NamedLocale>(),
+          locales: availaiableLocales.cast<preview.NamedLocale>(),
           devices: devices!,
           data: data,
         );
@@ -137,7 +135,7 @@ extension DevicePreviewStateHelperExtensions on DevicePreviewStore {
   /// Access to all available locales.
   ///
   /// Throws an exception if not initialized.
-  List<NamedLocale> get locales => state.maybeMap(
+  List<preview.NamedLocale> get locales => state.maybeMap(
         initialized: (state) => state.locales,
         orElse: () => throw Exception('Not initialized'),
       );

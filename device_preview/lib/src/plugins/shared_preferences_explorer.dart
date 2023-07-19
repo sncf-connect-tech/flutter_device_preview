@@ -56,7 +56,7 @@ class _AllPreferencesViewState extends State<_AllPreferencesView> {
 
   @override
   void initState() {
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _update();
     });
     super.initState();

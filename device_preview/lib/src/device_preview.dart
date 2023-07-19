@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:typed_data';
+import 'dart:ui' as ui;
 
 import 'package:device_frame/device_frame.dart';
 import 'package:device_preview/src/state/state.dart';
@@ -9,10 +10,8 @@ import 'package:device_preview/src/utilities/media_query_observer.dart';
 import 'package:device_preview/src/views/tool_bar/toolbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-import 'dart:ui' as ui;
 
 import 'locales/default_locales.dart';
 import 'plugins/plugin.dart';
@@ -105,7 +104,6 @@ class DevicePreview extends StatefulWidget {
     DevicePreviewStorage? storage,
     this.enabled = true,
   })  : assert(devices == null || devices.isNotEmpty),
-        assert(isToolbarVisible != null),
         storage = storage ?? DevicePreviewStorage.preferences(),
         super(key: key);
 
@@ -151,7 +149,7 @@ class DevicePreview extends StatefulWidget {
           countryCode: countryCode,
         );
       },
-      orElse: () => WidgetsBinding.instance!.window.locale,
+      orElse: () => WidgetsBinding.instance.window.locale,
     );
   }
 
@@ -554,7 +552,7 @@ class _ToolsOverlayState extends State<_ToolsOverlay> {
   @override
   void initState() {
     // Forcing rebuild to update absolute postion in `_overlayKey`
-    WidgetsBinding.instance!.addPostFrameCallback(
+    WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) => setState(() {}),
     );
     super.initState();

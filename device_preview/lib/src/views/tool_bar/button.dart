@@ -50,7 +50,6 @@ class ToolBarButton extends StatefulWidget {
             isRoundedRight ||
             isRoundedBottom ||
             isRoundedBottomRight,
-        assert(autofocus != null),
         super(key: key);
 
   @override
@@ -163,12 +162,12 @@ class _ToolBarButtonState extends State<ToolBarButton> {
                 decoration: decoration(toolBarStyle),
                 padding: padding,
                 child: AnimatedDefaultTextStyle(
+                  style: textStyle(toolBarStyle),
+                  duration: duration,
                   child: IconTheme(
                     data: iconTheme(toolBarStyle),
                     child: _content(context, !isHorizontal),
                   ),
-                  style: textStyle(toolBarStyle),
-                  duration: duration,
                 ),
               ),
             ),

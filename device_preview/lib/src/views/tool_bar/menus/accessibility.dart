@@ -2,7 +2,6 @@ import 'package:device_preview/src/state/store.dart';
 import 'package:device_preview/src/views/device_preview_style.dart';
 import 'package:device_preview/src/views/widgets/popover.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 class AccessibilityPopOver extends StatelessWidget {
@@ -164,7 +163,7 @@ class _SelectBox extends StatelessWidget {
           ),
         ),
         borderRadius: BorderRadius.circular(2),
-        color: Theme.of(context).accentColor.withOpacity(
+        color: Theme.of(context).colorScheme.secondary.withOpacity(
               value ? 1 : 0.0,
             ),
       ),

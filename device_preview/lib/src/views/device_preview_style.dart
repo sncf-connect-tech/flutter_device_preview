@@ -1,8 +1,8 @@
 import 'package:device_preview/src/state/state.dart';
 import 'package:device_preview/src/state/store.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';
 
 part 'device_preview_style.freezed.dart';
@@ -83,7 +83,7 @@ class DevicePreviewTheme extends InheritedWidget {
 
     // If toolbar position isn't supported, fallback to bottom.
     final media = MediaQuery.maybeOf(context) ??
-        MediaQueryData.fromWindow(WidgetsBinding.instance!.window);
+        MediaQueryData.fromView(WidgetsBinding.instance.window);
     if (!DevicePreviewTheme.isPositionAvailableForWidth(
         result.toolBar.position, media.size.width)) {
       result = result.copyWith(

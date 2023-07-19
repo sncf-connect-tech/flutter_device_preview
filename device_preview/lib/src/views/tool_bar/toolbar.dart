@@ -1,15 +1,15 @@
 import 'dart:math' as math;
+
 import 'package:device_frame/device_frame.dart';
 import 'package:device_preview/src/state/store.dart';
 import 'package:device_preview/src/views/device_preview_style.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
+
 import '../../device_preview.dart';
 import '../../utilities/spacing.dart';
-
-import 'format.dart';
 import 'button.dart';
+import 'format.dart';
 import 'menus/accessibility.dart';
 import 'menus/devices.dart';
 import 'menus/locales.dart';
@@ -28,8 +28,8 @@ class DevicePreviewToolBar extends StatefulWidget {
     return 60 +
         12 +
         (toolBarStyle.position == DevicePreviewToolBarPosition.bottom
-            ? WidgetsBinding.instance!.window.padding.bottom
-            : WidgetsBinding.instance!.window.padding.top);
+            ? WidgetsBinding.instance.window.padding.bottom
+            : WidgetsBinding.instance.window.padding.top);
   }
 
   static double width(BuildContext context) {
@@ -37,8 +37,8 @@ class DevicePreviewToolBar extends StatefulWidget {
     return 180 +
         12 +
         (toolBarStyle.position == DevicePreviewToolBarPosition.left
-            ? WidgetsBinding.instance!.window.padding.left
-            : WidgetsBinding.instance!.window.padding.right);
+            ? WidgetsBinding.instance.window.padding.left
+            : WidgetsBinding.instance.window.padding.right);
   }
 
   @override
@@ -74,7 +74,7 @@ class _DevicePreviewToolBarState extends State<DevicePreviewToolBar> {
                 store.deviceInfo.identifier.type,
             builder: (context, DeviceType deviceType, _) => ToolBarButton(
               isRounded: true,
-              title: name?.toString() ?? '',
+              title: name.toString(),
               icon: deviceType.typeIcon(),
               onTap: () => Popover.open(context),
             ),
@@ -281,12 +281,11 @@ class _DevicePreviewToolBarState extends State<DevicePreviewToolBar> {
 }
 
 class _ToolBarClipper extends CustomClipper<Path> {
-  final double radius;
+  final double radius = 12;
   final DevicePreviewToolBarPosition position;
 
   const _ToolBarClipper({
     required this.position,
-    this.radius = 12.0,
   });
 
   @override

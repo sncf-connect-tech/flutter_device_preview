@@ -139,7 +139,7 @@ class _ExampleAppState extends State<ExampleApp> {
 }
 
 class FakeScreen extends StatefulWidget {
-  const FakeScreen({Key key}) : super(key: key);
+  const FakeScreen({super.key});
   @override
   _FakeScreenState createState() => _FakeScreenState();
 }

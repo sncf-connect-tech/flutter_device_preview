@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../device_preview_style.dart';
 
@@ -204,8 +203,7 @@ class PopoverPageRoute<T> extends PageRoute<T> {
     required this.builder,
     this.transitionDuration = const Duration(milliseconds: 0),
     this.reverseTransitionDuration = const Duration(milliseconds: 0),
-  })  : assert(builder != null),
-        super(
+  }) : super(
           settings: settings,
           fullscreenDialog: true,
         );
@@ -285,7 +283,7 @@ class _PopoverSearchFieldState extends State<PopoverSearchField> {
   @override
   void didUpdateWidget(covariant PopoverSearchField oldWidget) {
     if (widget.text != _controller!.text) {
-      WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         _controller!.text = widget.text;
       });
     }
@@ -294,7 +292,7 @@ class _PopoverSearchFieldState extends State<PopoverSearchField> {
   }
 
   void _clear() {
-    WidgetsBinding.instance!.addPostFrameCallback((_) => _controller!.clear());
+    WidgetsBinding.instance.addPostFrameCallback((_) => _controller!.clear());
   }
 
   @override
@@ -339,6 +337,7 @@ class _PopoverSearchFieldState extends State<PopoverSearchField> {
                 size: 14,
               ),
               suffix: InkWell(
+                onTap: _clear,
                 child: Padding(
                   padding: EdgeInsets.only(
                     top: toolBarStyle.spacing.small.top,
@@ -349,7 +348,6 @@ class _PopoverSearchFieldState extends State<PopoverSearchField> {
                     color: toolBarStyle.foregroundColor.withOpacity(0.5),
                   ),
                 ),
-                onTap: _clear,
               ),
             ),
           ),

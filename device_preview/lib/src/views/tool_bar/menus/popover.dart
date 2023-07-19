@@ -4,7 +4,6 @@ import 'package:device_preview/src/utilities/media_query_observer.dart';
 import 'package:device_preview/src/views/device_preview_style.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../../utilities/position.dart';
 
@@ -78,7 +77,7 @@ class _PopoverState extends State<Popover> {
 
       _overlayEntries.add(barrier);
       _overlayEntries.add(popover);
-      Overlay.of(context)!.insertAll(_overlayEntries);
+      Overlay.of(context).insertAll(_overlayEntries);
       _isOpen = true;
     }
   }
@@ -138,18 +137,18 @@ class __PopOverContainerState extends State<_PopOverContainer>
     // Centered bottom
     _translate = Offset.zero;
     _isStarted = false;
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       setState(() {
         _isStarted = true;
       });
     });
     super.initState();
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
@@ -251,6 +250,8 @@ class __PopOverContainerState extends State<_PopOverContainer>
     );
 
     final baseTranslate = (_translate ?? Offset.zero);
+    final darkTheme = ThemeData.dark();
+
     return Positioned(
       left: bounds.left + baseTranslate.dx,
       top: bounds.top - media.viewInsets.bottom + baseTranslate.dy,
@@ -266,8 +267,9 @@ class __PopOverContainerState extends State<_PopOverContainer>
           removeRight: true,
           removeBottom: true,
           child: Theme(
-            data: ThemeData.dark().copyWith(
-              accentColor: previewTheme.toolBar.buttonHoverBackgroundColor,
+            data: darkTheme.copyWith(
+              colorScheme: darkTheme.colorScheme.copyWith(
+                  secondary: previewTheme.toolBar.buttonHoverBackgroundColor),
             ),
             child: AnimatedContainer(
               duration: duration,
